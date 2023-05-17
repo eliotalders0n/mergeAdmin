@@ -1,0 +1,2 @@
+let brands = [  {    "brand": "Toyota"  },  {    "brand": "Ford"  },  {    "brand": "Chevrolet"  },  {    "brand": "Honda"  },  {    "brand": "Nissan"  },  {    "brand": "BMW"  },  {    "brand": "Mercedes-Benz"  },  {    "brand": "Audi"  },  {    "brand": "Kia"  },  {    "brand": "Hyundai"  }]
+export default brands
