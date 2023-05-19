@@ -283,13 +283,16 @@ function Admin() {
                       <Typography gutterBottom variant="h5" component="div">
                         {post.user_name}
                       </Typography>
+                      <Typography variant="body1" color="text.primary">
+                      type : {post.postType}
+                      </Typography>
                       <Typography variant="body2" color="text.secondary">
                         {post.text}
                       </Typography>
                       {post.post_status === true ? (
-                        <h1>Group {post.group} Only</h1>
+                        <h2>Group {post.group} Only</h2>
                       ) : (
-                        <h1>Public</h1>
+                        <h2>Public</h2>
                       )}
                       <br />
                       {/* {user_id && user_id === post.user_id && ( */}
