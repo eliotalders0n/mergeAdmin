@@ -15,6 +15,12 @@ import {
   InputLabel,
   MenuItem,
 } from "@mui/material";
+
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
 import React, { useState, useEffect } from "react";
 import Page from "src/components/Page";
 import useGetPosts from "src/hooks/useGetPosts";
@@ -39,6 +45,8 @@ function Admin() {
   }, []);
 
   const [postText, setPostText] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [postGroup, setPostGroup] = useState("");
   const [postType, setPostType] = useState("");
   const [imageFile, setImageFile] = useState(null);
@@ -46,6 +54,8 @@ function Admin() {
   const [imagePreview, setImagePreview] = useState(null);
   const [checkboxValue, setCheckboxValue] = useState(false);
 
+
+  console.log(" dates " + startDate + " : " + endDate);
   const handleCheckboxChange = (e) => {
     setCheckboxValue(e.target.checked);
   };
@@ -86,6 +96,8 @@ function Admin() {
       user_id: user_id,
       user_name: user_details.firstName,
       group: postGroup,
+      startDate: startDate,
+      endDate: endDate,
       post_status: checkboxValue,
       imageUrl: "",
       postType: postType,
@@ -199,12 +211,27 @@ function Admin() {
               onChange={handleGroupChange}
             >
               {group.map((u, index) => (
-              <MenuItem value={u.GroupNumber} key={index}>
-                {u.GroupNumber}
-              </MenuItem>
-            ))}
+                <MenuItem value={u.GroupNumber} key={index}>
+                  {u.GroupNumber}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
+          <br />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer components={["DatePicker", "DatePicker"]}>
+            <DatePicker
+                label="Start date"
+                value={startDate}
+                onChange={(newValue) => {const formattedDate = new Date(newValue).toLocaleDateString(); const finaldate = formattedDate.split('/').join('-'); setStartDate(finaldate)}}
+              />
+              <DatePicker
+                label="End date"
+                value={endDate}
+                onChange={(newValue) => {const formattedDate = new Date(newValue).toLocaleDateString(); const finaldate = formattedDate.split('/').join('-'); setEndDate(finaldate)}}
+              />
+            </DemoContainer>
+          </LocalizationProvider>
           <br />
           <input type="file" multiple onChange={handleImageChange} />
           <br />
@@ -227,51 +254,57 @@ function Admin() {
         </div>
 
         <br />
-        <Box sx={{ width: '100%' }}>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          {Posts.filter((post) => post.admin === true).map((post) => {
-            return (
-              <Grid xs={6}>
-              <Card
-                key={post.id}
-                className="mx-auto my-2"
-                style={{
-                  maxWidth: "30rem",
-                  border: "none",
-                  padding: "0",
-                  boxShadow: "2px 2px 2px 2px rgba(0, 60, 60, 0.3)",
-                  marginBottom: "20px",
-                }}
-              >
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image={post.imageUrl}
-                  title="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {post.user_name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {post.text}
-                  </Typography>
-                  {post.post_status === true ? (
-                    <h1>Group {post.group} Only</h1>
-                    ) : (<h1>Public</h1>)}
-                    <br/>
-                  {/* {user_id && user_id === post.user_id && ( */}
-                    <Button
-                      variant="contained"
-                      onClick={() => deleteItem(post.id)}
-                    >
-                      Delete
-                    </Button>
-                  {/* )} */}
-                </CardContent>
-              </Card>
-              </Grid>
-            );
-          })}
+        <Box sx={{ width: "100%" }}>
+          <Grid
+            container
+            rowSpacing={1}
+            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          >
+            {Posts.filter((post) => post.admin === true).map((post) => {
+              return (
+                <Grid xs={6}>
+                  <Card
+                    key={post.id}
+                    className="mx-auto my-2"
+                    style={{
+                      maxWidth: "30rem",
+                      border: "none",
+                      padding: "0",
+                      boxShadow: "2px 2px 2px 2px rgba(0, 60, 60, 0.3)",
+                      marginBottom: "20px",
+                    }}
+                  >
+                    <CardMedia
+                      sx={{ height: 140 }}
+                      image={post.imageUrl}
+                      title="green iguana"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {post.user_name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {post.text}
+                      </Typography>
+                      {post.post_status === true ? (
+                        <h1>Group {post.group} Only</h1>
+                      ) : (
+                        <h1>Public</h1>
+                      )}
+                      <br />
+                      {/* {user_id && user_id === post.user_id && ( */}
+                      <Button
+                        variant="contained"
+                        onClick={() => deleteItem(post.id)}
+                      >
+                        Delete
+                      </Button>
+                      {/* )} */}
+                    </CardContent>
+                  </Card>
+                </Grid>
+              );
+            })}
           </Grid>
         </Box>
       </Container>

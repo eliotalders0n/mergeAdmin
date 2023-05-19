@@ -1,104 +1,88 @@
- 
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
-  
-  .container {
-    height: 100vh;
-  }
-  
-  .raffle-header {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 40px 0px;
-    margin-bottom: 40px;
-  }
-  
-  .banner-image img{
-    width: 100%;
-  }
-  
-  .raffle-header__buttons {
-    display: flex;
-    margin-top: 40px;
-    gap: 30px;
-  }
-  
-  .raffle-namelist > span {
-    color: #ffffff;
-    background-color: #4e0051;
-    padding: 15px 30px;
-    margin: 10px;
-    display: flex;
-    border-radius: 20px;
-  }
-  
-  .raffle-names {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* app buttons */
-  .button-primary {
-    background-color: #ce00e0;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 15px 30px;
-    color: #ffffff;
-    border-radius: 72px;
-    border: none;
-    display: flex;
-    align-items: center;
-  }
-  
-  .button-primary:hover {
-    background-color: #ad00bd;
-    cursor: pointer;
-  }
-  
-  .button-primary > img {
-    margin-right: 10px;
-  }
-  
-  .button-outline {
-    background-color: transparent;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 15px 30px;
-    color: #ad00bd;
-    border-radius: 72px;
-    border: 2px solid #C700D9;
-    display: flex;
-    align-items: center;
-  }
-  
-  .button-outline:hover {
-    background-color: rgba(238, 238, 238, 0.084);
-    cursor: pointer;
-  }
-  
-  .button-outline > img {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
-  }
-  
-  .raffle-ends{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .raffle-ends h3{
-   
-    font-size: 26px;
-    font-weight: 400;
-  }
+.react-calendar { 
+  width: 400px;
+  max-width: 100%;
+  background-color: #fff;
+  color: #222;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+ }
+ .react-calendar__navigation button {
+  color: #6f48eb;
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+  margin-top: 8px;
+ }
+ .react-calendar__navigation button:enabled:hover,
+ .react-calendar__navigation button:enabled:focus {
+  background-color: #f8f8fa;
+ }
+ .react-calendar__navigation button[disabled] {
+  background-color: #f0f0f0;
+ }
+ abbr[title] {
+  text-decoration: none;
+ }
+ /* .react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+ } */
+ .react-calendar__tile:enabled:hover,
+ .react-calendar__tile:enabled:focus {
+  background: #f8f8fa;
+  color: #6f48eb;
+  border-radius: 6px;
+ }
+ .react-calendar__tile--now {
+  background: #6f48eb33;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #6f48eb;
+ }
+ .react-calendar__tile--now:enabled:hover,
+ .react-calendar__tile--now:enabled:focus {
+  background: #6f48eb33;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #6f48eb;
+ }
+ .react-calendar__tile--hasActive:enabled:hover,
+ .react-calendar__tile--hasActive:enabled:focus {
+  background: #f8f8fa;
+ }
+ .react-calendar__tile--active {
+  background: #6f48eb;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+ }
+ .react-calendar__tile--active:enabled:hover,
+ .react-calendar__tile--active:enabled:focus {
+  background: #6f48eb;
+  color: white;
+ }
+ .react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #f8f8fa;
+ }
+ .react-calendar__tile--range {
+  background: #f8f8fa;
+  color: #6f48eb;
+  border-radius: 0;
+ }
+ .react-calendar__tile--rangeStart {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background: #6f48eb;
+  color: white;
+ }
+ .react-calendar__tile--rangeEnd {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background: #6f48eb;
+  color: white;
+ }
