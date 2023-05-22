@@ -1,9 +1,8 @@
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { Form, FormikProvider, useFormik } from 'formik';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
 // material
-import { TextField, Alert, Container, Card,Link, Typography, Box, Stack } from '@mui/material';
+import { TextField, Alert, Container,Typography, Box, Stack } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { styled } from '@mui/material/styles';
 // hooks
@@ -62,19 +61,6 @@ export default function ResetPasswordForm({ onSent, onGetEmail }) {
       display: 'flex'
     }
   }));
-  
-
-  
-  const ContentStyle = styled('div')(({ theme }) => ({
-    maxWidth: 480,
-    margin: 'auto',
-    display: 'flex',
-    minHeight: '100vh',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    padding: theme.spacing(6, 0)
-  }));
-
   
   return (
     <RootStyle title="Register">

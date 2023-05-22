@@ -50,7 +50,7 @@ function Admin() {
   const [postGroup, setPostGroup] = useState("");
   const [postType, setPostType] = useState("");
   const [imageFile, setImageFile] = useState(null);
-  const [uploadProgress, setUploadProgress] = useState(0);
+  // const [uploadProgress, setUploadProgress] = useState(0);
   const [imagePreview, setImagePreview] = useState(null);
   const [checkboxValue, setCheckboxValue] = useState(false);
 
@@ -118,7 +118,7 @@ function Admin() {
           const progress = Math.round(
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
-          setUploadProgress(progress);
+          // setUploadProgress(progress);
           console.log(progress);
         },
         (error) => {
@@ -139,7 +139,7 @@ function Admin() {
     // Reset form fields
     setPostText("");
     setImageFile([]);
-    setUploadProgress([]);
+    // setUploadProgress([]);
     alert("Image uploaded");
   };
 

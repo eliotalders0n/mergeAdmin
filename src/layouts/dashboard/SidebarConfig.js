@@ -3,10 +3,10 @@ const sidebarConfig = [
     title: 'dashboard',
     path: '/app',
   },
-  //  {
-  //   title: 'Calender',
-  //   path: '/calendar',
-  //  },
+   {
+    title: 'Resources',
+    path: '/settings',
+   },
    {
     title: 'Small Groups',
     path: '/hospitals',

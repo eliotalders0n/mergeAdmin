@@ -11,7 +11,6 @@ import EditHospital from "./pages/pages/EditHospital";
 import ViewUser from "./pages/pages/users/ViewUser";
 import Extras from "./pages/pages/Extras";
 import Admin from "./pages/pages/Admin";
-// import Calendar from "./pages/pages/Calendar";
 import AddNewHospital from "./pages/pages/AddNewHospital";
 
 // ----------------------------------------------------------------------
@@ -26,7 +25,6 @@ export default function Router() {
 
         { path: "/settings/", element: <Settings /> },
         { path: "/users/", element: <Users /> },
-        // { path: "/calendar/", element: <Calendar /> },
         { path: "/viewUser/:id", element: <ViewUser /> },
         { path: "/addHospital", element: <AddNewHospital /> },
         { path: "/editHospital/:id", element: <EditHospital /> },

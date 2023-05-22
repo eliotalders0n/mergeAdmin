@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import {
   Toolbar,
-  Tooltip,
-  IconButton,
   Typography,
   OutlinedInput,
   InputAdornment

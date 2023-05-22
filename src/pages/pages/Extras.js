@@ -20,7 +20,7 @@ import {
 import Page from "../../components/Page";
 import firebase from "../../firebase";
 import Scrollbar from "../../components/Scrollbar";
-import SearchNotFound from "../../components/SearchNotFound";
+// import SearchNotFound from "../../components/SearchNotFound";
 import {
   UserListHead
 } from "../../sections/@dashboard/user";
@@ -82,7 +82,7 @@ export default function Extras() {
   const [order, setOrder] = useState("asc");
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState("name");
-  const [filterName, setFilterName] = useState("");
+  // const [filterName, setFilterName] = useState("");
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [loading, setlaoding] = useState(false);
 
@@ -123,7 +123,7 @@ export default function Extras() {
   const filteredUsers = applySortFilter(
     USERLIST,
     getComparator(order, orderBy),
-    filterName
+    // filterName
   );
 
   const isUserNotFound = filteredUsers.length === 0;
@@ -281,7 +281,7 @@ export default function Extras() {
                       <TableBody>
                         <TableRow>
                           <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                            <SearchNotFound searchQuery={filterName} />
+                            {/* <SearchNotFound searchQuery={filterName} /> */}
                           </TableCell>
                         </TableRow>
                       </TableBody>

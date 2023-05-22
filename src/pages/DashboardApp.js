@@ -34,13 +34,6 @@ export default function DashboardApp() {
   const servingOpps = posts.filter((post) => post.postType === "serve");
   const eventOpps = posts.filter((post) => post.postType === "event");
 
-  const data = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 },
-  ];
-
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -151,12 +144,6 @@ export default function DashboardApp() {
             <FullCalendar
               plugins={[dayGridPlugin]}
               initialView="dayGridMonth"
-              // events={[
-              //   { title: "Event 1", date: "2023-05-20" },
-              //   { title: "Event 2", date: "2023-05-21" },
-              //   // Add more events as needed
-              //   ]}
-
               events={events}
             />
           </Grid>

@@ -20,7 +20,7 @@ import {
 // components
 import Page from "../../components/Page";
 import Scrollbar from "../../components/Scrollbar";
-import SearchNotFound from "../../components/SearchNotFound";
+// import SearchNotFound from "../../components/SearchNotFound";
 import {
   UserListHead,
 } from "../../sections/@dashboard/user";
@@ -84,28 +84,28 @@ export default function Hospitals() {
   const [order, setOrder] = useState("asc");
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState("name");
-  const [filterName, setFilterName] = useState("");
+  // const [filterName, setFilterName] = useState("");
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   let USERLIST = useGetHospitals().docs;
   const [bookings, setbookings] = useState([]);
-  const [selectedFilter, setselectedFilter] = useState("All");
+  // const [selectedFilter, setselectedFilter] = useState("All");
 
   useEffect(() => {
     setbookings(USERLIST);
   }, [USERLIST]);
 
-  const selectItem = (filt) => {
-    setselectedFilter(filt);
-    if (filt === "All") {
-      setbookings(USERLIST);
-      return;
-    }
-    let filtered = USERLIST.filter(
-      (item) => item.status === String(filt).toUpperCase()
-    );
-    setbookings(filtered);
-  };
+  // const selectItem = (filt) => {
+  //   setselectedFilter(filt);
+  //   if (filt === "All") {
+  //     setbookings(USERLIST);
+  //     return;
+  //   }
+  //   let filtered = USERLIST.filter(
+  //     (item) => item.status === String(filt).toUpperCase()
+  //   );
+  //   setbookings(filtered);
+  // };
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
@@ -131,9 +131,9 @@ export default function Hospitals() {
     setPage(0);
   };
 
-  const handleFilterByName = (event) => {
-    setFilterName(event.target.value);
-  };
+  // const handleFilterByName = (event) => {
+  //   setFilterName(event.target.value);
+  // };
 
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - bookings?.length) : 0;
@@ -141,7 +141,7 @@ export default function Hospitals() {
   const filteredUsers = applySortFilter(
     bookings,
     getComparator(order, orderBy),
-    filterName
+    // filterName
   );
 
   const isUserNotFound = filteredUsers.length === 0;
@@ -289,7 +289,7 @@ export default function Hospitals() {
                   <TableBody>
                     <TableRow>
                       <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                        <SearchNotFound searchQuery={filterName} />
+                        {/* <SearchNotFound searchQuery={filterName} /> */}
                       </TableCell>
                     </TableRow>
                   </TableBody>

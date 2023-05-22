@@ -2,7 +2,6 @@ import { filter } from "lodash";
 import { useState } from "react";
 import {
   Link,
-  useNavigate,
 } from "react-router-dom";
 // material
 import {
@@ -23,7 +22,7 @@ import {
 // components
 import Page from "../../components/Page";
 import Scrollbar from "../../components/Scrollbar";
-import SearchNotFound from "../../components/SearchNotFound";
+// import SearchNotFound from "../../components/SearchNotFound";
 import { UserListHead } from "../../sections/@dashboard/user";
 //
 
@@ -31,8 +30,7 @@ import { CSVLink } from "react-csv";
 import useGetUsers from "src/hooks/useGetUsers";
 import { RegisterForm } from "../../sections/authentication/register";
 import { useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import useGetHospital from "src/hooks/useGetHospital";
+import { ToastContainer } from "react-toastify";
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
@@ -87,7 +85,7 @@ export default function Users() {
   const [order, setOrder] = useState("asc");
   const [selected, setSelected] = useState([]);
   const [orderBy, setOrderBy] = useState("name");
-  const [filterName, setFilterName] = useState("");
+  // const [filterName, setFilterName] = useState("");
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   let USERLIST = useGetUsers().docs;
@@ -141,7 +139,7 @@ export default function Users() {
   const filteredUsers = applySortFilter(
     bookings,
     getComparator(order, orderBy),
-    filterName
+    // filterName
   );
 
   const isUserNotFound = filteredUsers.length === 0;
@@ -260,7 +258,7 @@ export default function Users() {
                       <TableBody>
                         <TableRow>
                           <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                            <SearchNotFound searchQuery={filterName} />
+                            {/* <SearchNotFound searchQuery={filterName} /> */}
                           </TableCell>
                         </TableRow>
                       </TableBody>
