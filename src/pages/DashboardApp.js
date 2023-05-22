@@ -140,7 +140,7 @@ export default function DashboardApp() {
         </Grid>
 
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={10}>
+          <Grid item xs={12} sm={6} md={12}>
             <FullCalendar
               plugins={[dayGridPlugin]}
               initialView="dayGridMonth"
