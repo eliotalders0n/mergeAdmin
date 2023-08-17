@@ -21,11 +21,8 @@ import {
 import Page from "../../components/Page";
 import Scrollbar from "../../components/Scrollbar";
 // import SearchNotFound from "../../components/SearchNotFound";
-import {
-  UserListHead,
-} from "../../sections/@dashboard/user";
-//
-
+import { UserListHead } from "../../sections/@dashboard/user";
+import firebase from "./../../firebase";
 import useGetHospitals from "src/hooks/useGetHospitals";
 import { CSVLink } from "react-csv";
 // ----------------------------------------------------------------------
@@ -35,7 +32,7 @@ const TABLE_HEAD = [
   { id: "description", label: "description", alignRight: false },
   { id: "GroupNumber", label: "Group Number", alignRight: false },
   { id: "img", label: "img", alignRight: false },
-  { id: "status", label: "status", alignRight: false },
+  { id: "actions", label: "Actions", alignRight: false },
 
   { id: "" },
 ];
@@ -95,18 +92,6 @@ export default function Hospitals() {
     setbookings(USERLIST);
   }, [USERLIST]);
 
-  // const selectItem = (filt) => {
-  //   setselectedFilter(filt);
-  //   if (filt === "All") {
-  //     setbookings(USERLIST);
-  //     return;
-  //   }
-  //   let filtered = USERLIST.filter(
-  //     (item) => item.status === String(filt).toUpperCase()
-  //   );
-  //   setbookings(filtered);
-  // };
-
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -140,11 +125,28 @@ export default function Hospitals() {
 
   const filteredUsers = applySortFilter(
     bookings,
-    getComparator(order, orderBy),
+    getComparator(order, orderBy)
     // filterName
   );
 
   const isUserNotFound = filteredUsers.length === 0;
+
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const deleteItem = (id) => {
+    firebase
+      .firestore()
+      .collection("groups")
+      .doc(id)
+      .delete()
+      .then(() => {
+        alert("Group was deleted successfully");
+      })
+      .catch((e) => {
+        alert(e);
+      });
+
+    setShowConfirmation(false);
+  };
 
   return (
     <Page title="Quotes">
@@ -231,7 +233,7 @@ export default function Hospitals() {
 
         <Divider />
         <br />
-        
+
         <Card>
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
@@ -258,9 +260,41 @@ export default function Hospitals() {
                           <TableCell align="left">{row.name}</TableCell>
                           <TableCell align="left">{row.description}</TableCell>
                           <TableCell align="left">{row.GroupNumber}</TableCell>
-                          <TableCell align="left"><img src={row.img} alt={row.img} style={{width : "8vh"}}/></TableCell>
-                          <TableCell align="left">{row.status}</TableCell>
+                          <TableCell align="left">
+                            <img
+                              src={row.img}
+                              alt={row.img}
+                              style={{ width: "8vh" }}
+                            />
+                          </TableCell>
+                          {/* <TableCell align="left">{row.status}</TableCell> */}
+                          <TableCell align="left">
 
+
+                            {/* {showConfirmation ? (
+                              <div>
+                                <p>Are you sure you want to delete?</p>
+                                <Button onClick={deleteItem(row.id)}>Yes</Button>
+                                <Button variant="contained"
+                                  onClick={() => setShowConfirmation(false)}
+                                >
+                                  No
+                                </Button>
+                              </div>
+                            ) : (
+                              <Button variant="contained" onClick={() => setShowConfirmation(true)}>
+                                Delete
+                              </Button>
+                            )} */}
+
+                            
+                            <Button
+                              variant="contained"
+                              onClick={() => deleteItem(row.id)}
+                            >
+                              Delete
+                            </Button>
+                          </TableCell>
                           <TableCell align="left">
                             {" "}
                             <Link

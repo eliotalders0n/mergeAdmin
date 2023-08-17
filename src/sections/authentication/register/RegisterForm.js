@@ -31,7 +31,7 @@ export default function RegisterForm() {
       .max(50, "Too Long!")
       .required("Last name required"),
     group: Yup.string().min(1, "Too Long!").required("Group is required"),
-    address: Yup.string().max(15, "Too Long!").required("Address is required"),
+    address: Yup.string().max(75, "Too Long!").required("Address is required"),
     age: Yup.string().max(2, "Too Long!").required("Age is required"),
     gender: Yup.string().max(8, "Too Long!").required("Gender is required"),
     email: Yup.string()
